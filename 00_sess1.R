@@ -33,6 +33,10 @@ Tr$time <- Tr$time / 60
 # Tr |> View()
 
 ##ModeCanada dataset----
+#Really useful notes on jargon and notation in 2.2.
+#Good for noobs like me to know at the outset and not get stuck later.
+#Basically you need an outside option or arbitrarily set something to 0 util.
+
 data("ModeCanada", package='mlogit')
 # ModeCanada |> View()
 #I think this dfidx thing is just some kind of annotation/metadata.
@@ -41,9 +45,7 @@ MC <- dfidx(ModeCanada, subset = noalt == 4,
             xalt.levels = c('train', 'air', 'bus', 'car'))
 # MC |> View()
 
-#Really useful notes on jargon and notation in 2.2.
-#Good for noobs like me to know at the outset and not get stuck later.
-
+##Formula and modelmatrix----
 library(Formula)
 # f <- Formula(choice ~ cost | income | ivt)
 # ls()
@@ -56,4 +58,8 @@ library(Formula)
 #             xalt.levels = c('train', 'air', 'bus', 'car'))
 MC <- dfidx(ModeCanada, subset = noalt == 4, pkg='mlogit')
 mf <- model.frame(MC, Formula(choice ~ cost | income | ivt))
-head(model.matrix(mf))
+head(model.matrix(mf), 4)
+
+#So, the way to organize the data and write the fornula are clear. Moving on...
+
+# Section 3----
